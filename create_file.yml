@@ -1,0 +1,10 @@
+---
+- name: This Ansible playbook creates file or directory
+  hosts: all
+  become: true
+  gather_facts: no  
+  tasks:
+  - name: creating directory
+    file:
+      path: /home/ansadmin/dir1
+      state: directory  

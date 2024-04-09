@@ -1,0 +1,11 @@
+---
+- name: Ansible module to copy a files
+  hosts: all
+  become: true
+  tasks:
+  - name: copy a files
+    copy:
+      src: /opt/ansible/index.html
+      dest: /home/ansadmin
+      mode: 0600
+      owner: modi

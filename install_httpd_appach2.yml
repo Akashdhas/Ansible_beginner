@@ -1,0 +1,37 @@
+---
+- name: this playbook install and start httpd service
+  hosts: all
+  become: true
+  tasks:
+  - name: install httpd service
+    yum:
+      name: httpd
+      state: latest
+    when: ansible_os_family == "RedHat"    
+
+  - name: start httpd service
+    service:
+      name: httpd
+      state: started
+    when: ansible_os_family == "RedHat"
+     
+  - name: install apache2 service
+    apt:
+      name: apache2
+      state: latest
+    when: ansible_os_family == "Debian"    
+
+  - name: start apache2 service
+    service:
+      name: apache2
+      state: started
+    when: ansible_os_family == "Debian"
+
+  - name: copy a files
+    copy:
+      src: /opt/ansible/index.html
+      dest: /var/www/html
+      mode: 0666
+    
+    
+      

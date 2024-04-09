@@ -1,0 +1,13 @@
+---
+- name: Ansible module to install and start apache2 on ubutu
+  hosts: dbservers
+  become: true
+  tasks:
+    - name: install apache
+      apt:
+        name: apache2
+        state: present
+    - name: start apache2 service
+      service:
+        name: apache2
+        state: started      

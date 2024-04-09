@@ -1,0 +1,16 @@
+---
+- name: this playbook install and start httpd service
+  hosts: webservers
+  become: true
+  tasks:
+  - name: install httpd service
+    yum:
+      name: httpd
+      state: latest
+    notify: start httpd service
+  
+  handlers:      
+  - name: start httpd service
+    service:
+      name: httpd
+      state: started    

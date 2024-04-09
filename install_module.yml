@@ -1,0 +1,9 @@
+---
+- name: this playbook install packages
+  hosts: webservers
+  become: true
+  tasks:
+  - name: install packages
+    yum:
+      name: python
+      state: latest  
